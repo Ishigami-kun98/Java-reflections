@@ -1,4 +1,3 @@
-package lab6;
 
 public class NestedCallsTest {
     public static void main(String[] args) {

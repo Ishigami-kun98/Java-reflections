@@ -1,4 +1,3 @@
-package lab6;
 
 public class NestedCalls implements IfaceTest {
     private int i = 0;

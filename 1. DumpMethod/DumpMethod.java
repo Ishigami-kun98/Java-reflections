@@ -1,11 +1,15 @@
-package lab1;
 
 import java.lang.reflect.Method;
 
 public class DumpMethod {
     public static void main(String[] args) {
+
+        // this class find all interfaces that the target class have
+
         try {
-            Class<?>[] ilist = getInterface(Class.forName(args[0]));
+            Class<?>[] ilist = getInterface(Class.forName("TestClass"));
+            // This is using args
+            // Class<?>[] ilist = getInterface(Class.forName(args[0]));
             for (Class<?> iface : ilist) {
                 Method[] methods = iface.getMethods();
                 for (Method method : methods) {

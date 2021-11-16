@@ -1,4 +1,3 @@
-package lab1;
 
 class TestClass extends SuperClass implements interfacetest {
     public void add() {

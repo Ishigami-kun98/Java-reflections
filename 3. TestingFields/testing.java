@@ -1,10 +1,11 @@
-package lab3;
 
 import java.lang.reflect.Field;
 
 class testing {
 
     public static void main(String... args) {
+        // This test is used only to get the fields of java and
+        // to Manipulate it's fields
         try {
             Class<?> cls = Class.forName("TestingField");
             Field[] fields = cls.getDeclaredFields();

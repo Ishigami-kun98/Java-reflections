@@ -1,4 +1,3 @@
-package lab6;
 
 public interface IfaceTest {
     int i = 0;

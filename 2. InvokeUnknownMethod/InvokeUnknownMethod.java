@@ -1,5 +1,3 @@
-package lab2;
-
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -7,6 +5,8 @@ import java.util.regex.Pattern;
 class InvokeUnknownMethod {
 
     public static void main(String... args) {
+        // u need to use args as argument, something like
+        // java InvokeUnknownMethod Calculator add 10 5
         System.out.println(callMethod(args[0], args[1], Arrays.copyOfRange(args, 2, args.length)));
     }
 
@@ -14,6 +14,7 @@ class InvokeUnknownMethod {
         if (argsArgument.length > 2) {
             System.out.println("too many arguments");
             return null;
+
         }
         try {
             Class<?> cls = Class.forName(className);

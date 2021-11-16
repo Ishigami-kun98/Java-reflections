@@ -1,4 +1,3 @@
-package lab6;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
