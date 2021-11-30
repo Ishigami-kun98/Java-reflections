@@ -7,7 +7,7 @@ class InvokeUnknownMethod {
     public static void main(String... args) {
         // u need to use args as argument, something like
         // java InvokeUnknownMethod Calculator add 10 5
-        System.out.println(callMethod(args[0], args[1], Arrays.copyOfRange(args, 2, args.length)));
+        System.out.println("The result is " + callMethod(args[0], args[1], Arrays.copyOfRange(args, 2, args.length)));
     }
 
     static String callMethod(String className, String methodName, String[] argsArgument) {
@@ -17,11 +17,12 @@ class InvokeUnknownMethod {
 
         }
         try {
+
             Class<?> cls = Class.forName(className);
             Class<?>[] parameterTypes = new Class<?>[argsArgument.length];
             Object[] parameter = new Object[argsArgument.length];
-            System.out.println("The class is : " + className + " The method to be invoked is : " + methodName
-                    + " the argument passed is ");
+            System.out.print("The class is : " + className + " The method to be invoked is : " + methodName
+                    + " the argument passed is \n");
             for (int i = 0; i < argsArgument.length; i++) {
                 if (Pattern.compile("^\\d+$").matcher(argsArgument[i]).matches()) {
                     parameterTypes[i] = int.class;
@@ -30,6 +31,7 @@ class InvokeUnknownMethod {
                     parameterTypes[i] = double.class;
                     parameter[i] = Double.valueOf(argsArgument[i]);
                 }
+                System.out.println(parameter[i]);
             }
 
             Method method = cls.getDeclaredMethod(methodName, parameterTypes);
