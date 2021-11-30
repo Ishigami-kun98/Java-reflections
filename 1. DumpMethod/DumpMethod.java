@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class DumpMethod {
@@ -10,25 +11,19 @@ public class DumpMethod {
         try {
             Class<?> cls = Class.forName("TestClass");
             Class<?>[] ilist = getInterface(cls);
-            Class<?>[] scls = cls.getClasses();
-
-            for (Class<?> sclsp : scls) {
-                if (!sclsp.isInterface()) {
-                    // we are in class
-                    System.out.println("Class " + sclsp.getName());
-                    if (isSuperClass(sclsp)) {
-                        // is a super class
-                        System.out.println("Is a super class")
-                    }
-                }
-            }
+            System.out.println(cls.getSuperclass().getPermittedSubclasses().getClass().getName());
             // This is using args
             // Class<?>[] ilist = getInterface(Class.forName(args[0]));
 
             for (Class<?> iface : ilist) {
                 Method[] methods = iface.getMethods();
+                Field[] fields = iface.getDeclaredFields();
+                System.out.println("With method " + methods.length + " and field " + fields.length);
                 for (Method method : methods) {
-                    System.out.println(method.getName());
+                    System.out.println("with method" + method.getName());
+                }
+                for (var field : fields) {
+                    System.out.println("with fields " + field.getName());
                 }
             }
         } catch (ClassNotFoundException cnfe) {
@@ -42,10 +37,14 @@ public class DumpMethod {
         return cls.getInterfaces();
     }
 
-    static boolean isSuperClass(Class<?> cls) {
+    static boolean isSubClass(Class<?> cls) {
         if (cls.getSuperclass().equals(Object.class)) {
             return false;
         }
+        return true;
+    }
+
+    static boolean isSuperClass(Class<?> cls) {
         return true;
     }
 

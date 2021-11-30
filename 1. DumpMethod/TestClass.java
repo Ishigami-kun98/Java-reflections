@@ -1,5 +1,7 @@
 
-class TestClass extends SuperClass implements interfacetest {
+class TestClass extends SuperClass implements interfacetest, iface2 {
+    SuperClass s;
+
     public void add() {
 
     }
@@ -15,6 +17,12 @@ class TestClass extends SuperClass implements interfacetest {
 
     @Override
     public void prova() {
+
+    }
+
+    @Override
+    public void prova2() {
+        // TODO Auto-generated method stub
 
     }
 
