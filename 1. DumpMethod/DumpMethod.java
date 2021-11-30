@@ -1,6 +1,6 @@
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
+import java.util.ArrayList;
 
 public class DumpMethod {
 
@@ -11,7 +11,11 @@ public class DumpMethod {
         try {
             Class<?> cls = Class.forName("TestClass");
             Class<?>[] ilist = getInterface(cls);
-            System.out.println(cls.getSuperclass().getPermittedSubclasses().getClass().getName());
+
+            Class<?>[] scls = getSuperClasses(cls);
+            for (var scl : scls) {
+                System.out.println(scl.getName());
+            }
             // This is using args
             // Class<?>[] ilist = getInterface(Class.forName(args[0]));
 
@@ -48,16 +52,20 @@ public class DumpMethod {
         return true;
     }
 
-    /*
-     * static Class<?> getSuperClasses(Class<?> cls) {
-     * if (cls.equals(Object.class)) {
-     * System.out.println("finish");
-     * return cls;
-     * }
-     * System.out.println(
-     * "The className is " + cls.getName() + " \n it's super class is " +
-     * cls.getSuperclass().getName());
-     * return getSuperClasses(cls.getSuperclass());
-     * }
-     */
+    static Class<?>[] getSuperClasses(Class<?> cls) {
+        System.out.println("Ci sono " + cls.getSuperclass().getName());
+        ArrayList<Class<?>> superClasses = new ArrayList<Class<?>>();
+        boolean cond = true;
+        Class<?> cls2 = cls.getSuperclass();
+        while (cond) {
+            if (!cls2.equals(Object.class)) {
+                superClasses.add(cls2);
+                cls2 = cls2.getSuperclass();
+            } else
+                cond = false;
+        }
+
+        return superClasses.toArray(new Class<?>[superClasses.size()]);
+    }
+
 }
