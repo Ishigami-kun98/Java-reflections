@@ -10,15 +10,19 @@ public class DumpMethod {
 
         try {
             Class<?> cls = Class.forName("TestClass");
-            Class<?>[] ilist = getInterface(cls);
 
             Class<?>[] scls = getSuperClasses(cls);
-            for (var scl : scls) {
-                System.out.println(scl.getName());
+            System.out.println("The class " + cls.getName() + " contains " + scls.length + " super classes");
+            for (Class<?> scl : scls) {
+                System.out.println("The super class " + scl.getName() + " have " + scl.getDeclaredMethods().length
+                        + " methods and " + scl.getFields().length + " fields");
+                if (isSubClass(scl)) {
+                    System.out.println("and is a sub class of " + scl.getSuperclass().getName());
+                }
             }
             // This is using args
             // Class<?>[] ilist = getInterface(Class.forName(args[0]));
-
+            Class<?>[] ilist = getInterface(cls);
             for (Class<?> iface : ilist) {
                 Method[] methods = iface.getMethods();
                 Field[] fields = iface.getDeclaredFields();
