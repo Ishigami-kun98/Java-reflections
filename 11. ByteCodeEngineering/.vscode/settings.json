@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/lin/Desktop/jboss-javassist-javassist-52629ee/javassist.jar"
+    ]
+}
