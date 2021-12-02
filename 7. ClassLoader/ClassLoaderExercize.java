@@ -1,37 +1,17 @@
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.*;
 
-class ClassLoaderExercize extends ClassLoader{
-    public Class<?> findClass(String name) throws ClassNotFoundException{
-        
- 
-            byte[] b = loadClassData(name);
-            if(b != null) return defineClass(name, b, 0, b.length);
-        
-        throw new ClassNotFoundException();
-    }
+class ClassLoaderExercize {
 
-    byte[] loadClassData(String name){
+    static SimpleClassLoader scl;
 
-        
-        int size = (int) (new File(name)).length();
-        byte[] buff = new byte[size];
+    public static void main(String[] args) {
+        scl = new SimpleClassLoader(
+                "C:/Users/hulio/Desktop/School/Tecniche Speciali di programmazione/LabMaterial/Solutions/Java-reflections");
         try {
-            FileInputStream filein = new FileInputStream(name);
-            size = filein.read(buff);
-            filein.close();
-           
-        } catch (Exception e) {
+            Class<?> cls = scl.findClass("prova");
+            System.out.println(cls.getClassLoader().getName());
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return buff;
-    }
-
-    public static void main(String[] args) throws ClassNotFoundException {
-        ClassLoaderExercize cle = new ClassLoaderExercize();
-        cle.findClass("ClassLoaderExercize.class");
     }
 }
