@@ -4,11 +4,11 @@ import java.util.regex.Pattern;
 
 public class InvokeMethodClass {
     public static void main(String[] args) {
-        String[] argomenti = { "12", "12.5" };
-        callMethod("MethodClass", "append", argomenti);
+        String[] argomenti = { "ac", "b" };
+        System.out.println("the result is " + callMethod("MethodClass", "append", argomenti));
     }
 
-    static void callMethod(String className, String method, String[] args) {
+    static Object callMethod(String className, String method, String[] args) {
         try {
             Class<?> cls = Class.forName(className);
             Method[] methods = cls.getMethods();
@@ -28,19 +28,22 @@ public class InvokeMethodClass {
             }
             if (!check) {
                 System.out.println("Method don't exist or the number of argument doesn't match");
-                return;
+                return null;
             }
             Class<?>[] enterParamets = new Class<?>[args.length];
             Object[] argumentsConverted = new Object[args.length];
             Method methodo = cls.getMethod(method, paramets);
             for (int i = 0; i < args.length; i++) {
-                if (Pattern.compile("\\w").matcher(args[i]).matches()) {
+                System.out.println(args[i]);
+                if (Pattern.compile("\\w$").matcher(args[i]).matches()) {
                     enterParamets[i] = String.class;
+                    argumentsConverted[i] = String.valueOf(args[i]);
                     System.out.println("The argument is String");
                 }
                 if (Pattern.compile("\\d+").matcher(args[i]).matches()) {
                     enterParamets[i] = Integer.class;
-                    argumentsConverted[i] = Integer.valueOf(args[i]);
+                    int a = Integer.valueOf(args[i]);
+                    argumentsConverted[i] = a;
                     System.out.println("The argument is Integer");
 
                 }
@@ -51,6 +54,7 @@ public class InvokeMethodClass {
                 }
             }
             Object invoke = methodo.invoke(cls.getConstructor().newInstance(), argumentsConverted);
+            return invoke;
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -62,7 +66,9 @@ public class InvokeMethodClass {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
-
+        return null;
     }
 }
