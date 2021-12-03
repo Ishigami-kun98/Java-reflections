@@ -16,7 +16,7 @@ public class readWriteByteCode {
         }
     }
 
-    public static void main(String[] args) throws NotFoundException, CannotCompileException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public static void main(String[] args) throws NotFoundException, CannotCompileException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException {
         ClassPool pool = ClassPool.getDefault();
         /*CtClass cc = pool.get("Person");
         System.out.println(cc.getName());
