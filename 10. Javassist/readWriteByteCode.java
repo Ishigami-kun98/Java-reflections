@@ -31,12 +31,14 @@ public class readWriteByteCode {
         for (CtClass c : cc2.getInterfaces()){
             System.out.println(c.getName());
         }
-        CtClass ccc = pool.get("Person");
+        /*CtClass ccc = pool.get("Person");
         CtMethod m = ccc.getDeclaredMethod("getAge");
         m.insertBefore("{System.out.println(\"Hello getAge:\");}");
         Class<?> c = ccc.toClass();
         Person p = (Person)c.newInstance();
         p.getAge(2018);
+        //Nonostante ho fatto una sorta di copia incolla dal tutorial, non funziona ;)
+        */
         
     }
 }
