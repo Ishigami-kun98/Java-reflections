@@ -1,8 +1,11 @@
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
+import javassist.CtField;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 public class readWriteByteCode {
@@ -13,7 +16,7 @@ public class readWriteByteCode {
         }
     }
 
-    public static void main(String[] args) throws NotFoundException, CannotCompileException, IOException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws NotFoundException, CannotCompileException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         ClassPool pool = ClassPool.getDefault();
         /*CtClass cc = pool.get("Person");
         System.out.println(cc.getName());
@@ -39,6 +42,15 @@ public class readWriteByteCode {
         p.getAge(2018);
         //Nonostante ho fatto una sorta di copia incolla dal tutorial, non funziona ;)
         */
-        
+        //Modifying systemClass
+        System.out.println("Adding to String a hidden value");
+        CtClass cc3 = pool.get("java.lang.String");
+        CtField f = new CtField(CtClass.intType, "hiddenvalue", cc3);
+        f.setModifiers(Modifier.PUBLIC);
+        cc3.addField(f);
+        cc3.writeFile(".");
+        for (CtField field : cc3.getFields()) {
+            System.out.println(field.getName());
+        }
     }
 }
