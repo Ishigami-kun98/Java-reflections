@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch readWriteByteCode",
+            "request": "launch",
+            "mainClass": "readWriteByteCode",
+            "projectName": "10. Javassist_c8d3d035"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch example",
+            "request": "launch",
+            "mainClass": "example",
+            "projectName": "10. Javassist_c8d3d035"
+        },
+        {
+            "type": "java",
+            "name": "Launch example2",
+            "request": "launch",
+            "mainClass": "example2",
+            "projectName": "10. Javassist_c8d3d035"
+        },
+        {
+            "type": "java",
+            "name": "Launch example3",
+            "request": "launch",
+            "vmArgs": "mc ayrthon",
+            "mainClass": "example3",
+            "projectName": "10. Javassist_c8d3d035"
+        }
+    ]
+}
