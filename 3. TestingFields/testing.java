@@ -1,5 +1,6 @@
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 class testing {
 
@@ -21,12 +22,14 @@ class testing {
             field.set(field, toChange);
             System.out.println(TestingField.s);
             Field[] tfFields = tf.getClass().getDeclaredFields();
-
+            
             for (Field fields2 : tfFields) {
                 fields2.setAccessible(true);
                 System.out.println(fields2.get(tf));
             }
-
+            Method clsFirstMethod = cls.getMethods()[0];
+            System.out.println("Class name : " + cls.getName() + "\n first method is " + clsFirstMethod.getName());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
