@@ -7,7 +7,7 @@ class ClassLoaderExercize {
         scl = new SimpleClassLoader(
                 "C:/Users/hulio/Desktop/School/Tecniche Speciali di programmazione/LabMaterial/Solutions/Java-reflections/7. ClassLoader");
         try {
-            Class<?> cls = scl.findClass("ClassLoaderExercize");
+            Class<?> cls = scl.loadClass("ClassLoaderExercize");
             System.out.println(cls.getClassLoader().getName());
 
             // VerboseClassLoader vcl = new VerboseClassLoader(

@@ -1,8 +1,9 @@
 package users;
 
-public class customClass {
+public class customClass extends myClass1{
     String c;
     public customClass(String c){
+        super(3);
         this.c = c;
     }
     @Override

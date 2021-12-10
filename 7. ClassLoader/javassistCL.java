@@ -21,8 +21,8 @@ public class javassistCL extends ClassLoader{
 
     public static void main(String[] args) throws NotFoundException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         javassistCL s = new javassistCL();
-        Class<?> c = s.loadClass("ClassLoaderExercize");
+        Class<?> c = s.loadClass("ClassLoaderExercize.class");
         c.getDeclaredMethod("main", new Class[]{String[].class}).invoke(null, new Object[]{args});
-        System.out.println("Hello");
+        
     }
 }
