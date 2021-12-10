@@ -52,7 +52,7 @@ public class proxy extends Object implements Serializable {
     }
 
     public static void main(String[] args) {
-        // Person p = new Person();
+        
         TestingFields tfs = new TestingFields(7, 3.14);
         DynamicInvocationHandler dih = new DynamicInvocationHandler(tfs);
         Go proxies = (Go) Proxy.newProxyInstance(Go.class.getClassLoader(), new Class[] { Go.class }, dih);
@@ -64,11 +64,6 @@ public class proxy extends Object implements Serializable {
         h.walk();
         h.sleep();
         h.dream("s");
-
-        // human tfs = (human) Proxy.newProxyInstance(human.class.getClassLoader(), new
-        // Class[] { human.class }, dih);
-        // tfs.walk();
-        // tfs.sleep();
-        // tfs.dream("bad");
+        
     }
 }

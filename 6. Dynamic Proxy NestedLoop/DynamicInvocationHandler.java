@@ -18,13 +18,13 @@ public class DynamicInvocationHandler extends NestedCalls implements InvocationH
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object result = null;
         try {
-            System.out.println("method  " + method.getName());
             System.out.println(i++);
             final MethodHandle h = MethodHandles.lookup().unreflectSpecial(
                     NestedCalls.class.getDeclaredMethod(method.getName(), method.getParameterTypes()), getClass());
             result = h.bindTo(this).invokeWithArguments(args);
-            i--;
-            return result;
+            
+            System.out.println(i--);
+
         } catch (Throwable e) {
             e.printStackTrace();
         }
