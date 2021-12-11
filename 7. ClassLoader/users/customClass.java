@@ -10,4 +10,7 @@ public class customClass extends myClass1{
     public boolean equals(Object obj) {
         return obj.equals(c);
     }
+    public String getC(){
+        return c;
+    }
 }

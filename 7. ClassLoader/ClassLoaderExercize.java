@@ -1,26 +1,21 @@
+import java.nio.file.Paths;
 
 class ClassLoaderExercize {
 
     static SimpleClassLoader scl;
 
     public static void main(String[] args) {
-        scl = new SimpleClassLoader(
-                "C:/Users/hulio/Desktop/School/Tecniche Speciali di programmazione/LabMaterial/Solutions/Java-reflections/7. ClassLoader");
+        String directory = Paths.get(".").toAbsolutePath().normalize().toString() + "/users";
+        String fileName = "customClass";
+        System.out.println(directory + fileName);
+        scl = new SimpleClassLoader(directory);
         try {
-            Class<?> cls = scl.loadClass("ClassLoaderExercize");
-            System.out.println(cls.getClassLoader().getName());
-
-            // VerboseClassLoader vcl = new VerboseClassLoader(
-            // "C:/Users/hulio/Desktop/School/Tecniche Speciali di
-            // programmazione/LabMaterial/Solutions/Java-reflections/7. ClassLoader");
-            // vcl.loadClass(
-            // "C:/Users/hulio/Desktop/School/Tecniche Speciali di
-            // programmazione/LabMaterial/Solutions/Java-reflections/7.
-            // ClassLoader/ClassLoaderExercize");
-            // vcl.getClass(
-            // "C:/Users/hulio/Desktop/School/Tecniche Speciali di
-            // programmazione/LabMaterial/Solutions/Java-reflections/7.
-            // ClassLoader/ClassLoaderExercize");
+            
+            Class<?> cls = scl.loadClass(fileName);
+            
+            
+            //SimpleClassLoader scl = new SimpleClassLoader(directory);
+            //scl.loadClass(fileName);
             
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

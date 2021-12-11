@@ -68,6 +68,6 @@ public class exercizeCL extends ClassLoader{
         } catch (ClassNotFoundException e) {
             //TODO: handle exception
             e.printStackTrace();
-        }
+        } 
     }
 }
