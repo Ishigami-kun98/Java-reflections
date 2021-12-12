@@ -1,5 +1,6 @@
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -39,16 +40,19 @@ public class VerboseClassLoader extends ClassLoader {
     }
 
     private byte[] loadClassFile(String name) throws IOException {
+        //String classFile = directory+"/"+name;
         InputStream stream = getClass().getClassLoader().getResourceAsStream(name);
         int size = 0;
         if(stream != null)
         if (stream.available() > 0)
             size = stream.available();
+        //int size = (int)(new File(classFile).length());
         byte buff[] = new byte[size];
+        //FileInputStream in = new FileInputStream(classFile);
         DataInputStream in = new DataInputStream(stream);
-        in.readFully(buff);
-        if(in != null)
-            in.close();
+        if(in != null){
+        in.read(buff);
+        in.close();}
         return buff;
     }
 

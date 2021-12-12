@@ -1,11 +1,6 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
+import java.nio.file.*;
 
 public class exercizeCL extends ClassLoader{
     //Separate the user loaded class and system one
@@ -21,8 +16,8 @@ public class exercizeCL extends ClassLoader{
     }
     public synchronized Class<?> findClass(String filename)throws ClassNotFoundException{
         System.out.println("Loading " + filename + "...");
-            for (String string : directory) {
-                byte[] b = loadClassData(string, filename);
+            for (String dir : directory) {
+                byte[] b = loadClassData(dir, filename);
                 if (b != null){
                     if(filename.startsWith("java.")){
                         system ++;

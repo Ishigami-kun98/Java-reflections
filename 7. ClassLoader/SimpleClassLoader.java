@@ -22,12 +22,7 @@ public class SimpleClassLoader extends ClassLoader {
         }
         throw new ClassNotFoundException();
     }
-    @Override
-    public Class<?> loadClass(String name) throws ClassNotFoundException {
-        System.out.println("Ci sono");
-        if(!name.startsWith("java.")) { userLoad++; return findClass(name); }
-        systemLoad++; return super.loadClass(name);
-    }
+    
     protected byte[] getClassData(String directory, String fileName) {
         String classFile = directory + "/" + fileName.replace(".", "/") + ".class";
         System.out.println(classFile);
