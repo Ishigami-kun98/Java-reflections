@@ -1,4 +1,3 @@
-package users;
 
 public class myClass1 {
     int a;

@@ -29,16 +29,12 @@ class ByteCodeEngeneering{
             System.out.println(sb.toString());
         }
          catch (NotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (CannotCompileException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }  catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     

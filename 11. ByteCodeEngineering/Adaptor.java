@@ -65,7 +65,7 @@ public class Adaptor implements Translator{
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();//TODO: handle exception
+            e.printStackTrace();
         }
     }
    

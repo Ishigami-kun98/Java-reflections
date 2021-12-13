@@ -1,4 +1,3 @@
-package users;
 
 public class customClass extends myClass1{
     String c;
